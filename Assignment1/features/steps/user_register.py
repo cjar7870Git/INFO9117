@@ -6,7 +6,7 @@ def step_impl(context):
     register_found = re.search("register", context.browser.page_source, re.IGNORECASE)
     assert register_found
 
-@when("a new user submits their unique {username} and {password}")
+@when("a new user submits a unique {username} and {password}")
 def step_impl(context, username, password):
     """
     :type context: behave.runner.Context
@@ -15,8 +15,12 @@ def step_impl(context, username, password):
     """
     submit_username_password(context, username, password)
 
-@then ("the system should record the {username} and {password} of the new user")
-
+@then('the system should return "{text}" as the authentication status of the user')
+def step_impl(context, text):
+    """
+    :type context: behave.runner.Context
+    """
+    assert text in context.response
 
 
 

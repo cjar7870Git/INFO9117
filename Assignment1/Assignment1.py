@@ -47,7 +47,7 @@ def register():
             #print(users)
             return "Success"
         else:
-            return "fail"
+            return "Fail"
 
     else:
         return render_template("register.html")
