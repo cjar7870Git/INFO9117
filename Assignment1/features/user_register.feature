@@ -7,8 +7,20 @@ Feature: User Register
   Scenario Outline: New user registers
     Given at the register screen
     When a new user submits a unique <username> and <password>
-    Then the system should return "Success" as the authentication status of the user
+    Then the system should return "Success" as the registration status of the user
         Examples:
       | username | password  |
-      | chrisfjardine@gmail.com    | HoopyFrood     |
-      | CrazyUserName              | CrazyPassword  |
+      | _testchrisfjardine@gmail.com    | HoopyFrood     |
+      | _testCrazyUserName              | NewPassword  |
+
+
+
+  Scenario Outline: User attempts to register existing user name
+    Given at the register screen
+    When a user submits an existing <username> and <password>
+    Then the system should return "Fail" as the registration status of the user
+        Examples:
+      | username | password  |
+      | _testCrazyUserName   | NewPassword |
+
+

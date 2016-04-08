@@ -1,5 +1,7 @@
 from behave import *
 import re
+
+
 @given ("at the register screen")
 def step_impl(context):
     context.browser.get(context.address + "/register")
@@ -15,12 +17,22 @@ def step_impl(context, username, password):
     """
     submit_username_password(context, username, password)
 
-@then('the system should return "{text}" as the authentication status of the user')
+@when("a user submits an existing {username} and {password}")
+def step_impl(context, username, password):
+    """
+    :type context: behave.runner.Context
+    :type username: str
+    :type password: str
+    """
+    submit_username_password(context, username, password)
+
+@then('the system should return "{text}" as the registration status of the user')
 def step_impl(context, text):
     """
     :type context: behave.runner.Context
     """
     assert text in context.response
+
 
 
 
