@@ -34,12 +34,6 @@ def step_impl(context, text):
     assert text in context.response
 
 
-
-
-
-
-
-
 def submit_username_password(context, username, password):
     username_field = context.browser.find_element_by_name("username")
     password_field = context.browser.find_element_by_name("password")
