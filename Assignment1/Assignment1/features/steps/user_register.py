@@ -17,7 +17,7 @@ def step_impl(context, username, password):
     """
     submit_username_password(context, username, password)
 
-@when("a user submits an existing {username} and {password}")
+@when("a user submits an existinge {username} and {password}")
 def step_impl(context, username, password):
     """
     :type context: behave.runner.Context
@@ -33,7 +33,12 @@ def step_impl(context, text):
     """
     assert text in context.response
 
-
+@then ('the system should return "{text}" as the registration status')
+def step_impl(context, text):
+    """
+    :type context: behave.runner.Context
+    """
+    assert text in context.response
 
 
 

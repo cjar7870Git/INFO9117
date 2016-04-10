@@ -10,17 +10,13 @@ Feature: User Register
     Then the system should return "Success" as the registration status of the user
         Examples:
       | username | password  |
-      | _testchrisfjardine@gmail.com    | HoopyFrood     |
-      | _testCrazyUserName              | NewPassword  |
-
-
+      | chrisfjardine@gmail.com    | HoopyFrood     |
+      | CrazyUserName              | CrazyPassword  |
 
   Scenario Outline: User attempts to register existing user name
     Given at the register screen
-    When a user submits an existing <username> and <password>
-    Then the system should return "Fail" as the registration status of the user
+    When a user submits an existinge <username> and <password>
+    Then the system should return "Fail" as the registration status
         Examples:
       | username | password  |
-      | _testCrazyUserName   | NewPassword |
-
-
+      | CrazyUserName   | CrazyPassword |
