@@ -7,8 +7,8 @@ app = Flask(__name__)
 host="localhost"
 port="5000"
 address="http://{0}:{1}".format(host,port)
-conn = sqlite3.connect('BlueFarm.db')
-c = conn.cursor()
+#conn = sqlite3.connect('BlueFarm.db')
+#c = conn.cursor()
 
 users = {"test":"test123", "admin":"admin","newUser1":"newPassword1"}
 
@@ -47,12 +47,10 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username not in c.execute('SELECT username FROM Users'):        #if username not in users:
-           c.execute("INSERT INTO Users VALUES(username, password)")
-           conn.commit()
-           users[username] = password
-           #print(users)
-           return "Success"
+        if username not in users:
+            users[username] = password
+            #print(users)
+            return "Success"
         else:
            return "Fail"
 

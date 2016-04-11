@@ -6,7 +6,7 @@ Feature: User Register
 
   Scenario Outline: New user registers
     Given at the register screen
-    When a new user submits a unique <username> and <password>
+    When I submit a unique <username> and <password>
     Then the system should return "Success" as the registration status of the user
         Examples:
       | username | password  |
@@ -17,7 +17,7 @@ Feature: User Register
 
   Scenario Outline: User attempts to register existing user name
     Given at the register screen
-    When a user submits an existing <username> and <password>
+    When I submit an existing <username> and <password>
     Then the system should return "Fail" as the registration status of the user
         Examples:
       | username | password  |
